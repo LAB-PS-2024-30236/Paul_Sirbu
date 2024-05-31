@@ -4,28 +4,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import lombok.AllArgsConstructor;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public class Product {
+@NoArgsConstructor
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    @ManyToOne
+    private Product product;
 
-    private String shortDescription;
+    private int quantity;
 
-    private String longDescription;
-
-    private Double price;
-
+    @ManyToOne
+    private Cart cart;
 }

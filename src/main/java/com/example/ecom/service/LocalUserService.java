@@ -46,4 +46,5 @@ public class LocalUserService {
     public void deleteUser(Long userId) {
         localUserRepository.deleteById(userId);
     }
+
 }

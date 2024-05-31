@@ -33,8 +33,5 @@ public class WebOrderQuantities {
     /** The quantity being ordered. */
     private Integer quantity;
 
-    /** The order itself. */
-    @ManyToOne(optional = false)
-    private WebOrder order;
 
 }

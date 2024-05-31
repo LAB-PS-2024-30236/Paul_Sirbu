@@ -2,6 +2,7 @@ package com.example.ecom.controller;
 
 import com.example.ecom.model.Product;
 import com.example.ecom.service.ProductService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,10 +37,15 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    @GetMapping("/getproduct/{id}/{userId}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id, @PathVariable Long userId) {
-        Optional<Product> product = productService.getProductById(id, userId);
+    @GetMapping("/getproduct/{id}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        Optional<Product> product = productService.getProductById(id);
         return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/searchproduct/{term}")
+    public List<Product> searchProduct(@PathVariable String term) {
+        return productService.searchProducts(term);
     }
 
     @PutMapping("/updateproduct/{id}/{userId}")
@@ -53,4 +59,5 @@ public class ProductController {
         productService.deleteProduct(id, userId);
         return ResponseEntity.noContent().build();
     }
+
 }

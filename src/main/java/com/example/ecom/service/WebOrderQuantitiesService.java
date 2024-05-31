@@ -36,7 +36,6 @@ public class WebOrderQuantitiesService {
             WebOrderQuantities existingWebOrderQuantities = existingWebOrderQuantitiesOptional.get();
             existingWebOrderQuantities.setProduct(updatedWebOrderQuantities.getProduct());
             existingWebOrderQuantities.setQuantity(updatedWebOrderQuantities.getQuantity());
-            existingWebOrderQuantities.setOrder(updatedWebOrderQuantities.getOrder());
             // Update other fields as needed
             return webOrderQuantitiesRepository.save(existingWebOrderQuantities);
         } else {

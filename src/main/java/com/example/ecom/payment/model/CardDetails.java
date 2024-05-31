@@ -1,31 +1,26 @@
-package com.example.ecom.model;
+package com.example.ecom.payment.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-public class Product {
+public class CardDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
-    private String shortDescription;
-
-    private String longDescription;
-
-    private Double price;
-
+    private String number;
+    private String expiry;
+    private String cvc;
+    private Double amount;
+    private String paymentIntentId;
 }

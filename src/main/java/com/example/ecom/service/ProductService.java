@@ -30,13 +30,12 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Optional<Product> getProductById(Long productId, Long userId) {
-        if (localUserRepository.getById(userId).isAdmin()) {
-            return productRepository.findById(productId);
-        } else {
-            throw new RuntimeException("You don't have access to this functionality");
+    public List<Product> searchProducts(String term) {
+        return productRepository.findAll().stream().filter(product -> product.getName().contains(term)).toList();
+    }
 
-        }
+    public Optional<Product> getProductById(Long productId) {
+            return productRepository.findById(productId);
     }
 
     public Product updateProduct(Long productId, Product updatedProduct, Long userId) {
@@ -67,4 +66,6 @@ public class ProductService {
             throw new RuntimeException("You don't have access to this functionality");
         }
     }
+
+
 }

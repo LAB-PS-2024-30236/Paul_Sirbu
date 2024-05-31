@@ -1,5 +1,6 @@
 package com.example.ecom.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,6 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.math.BigInteger;
+import java.util.UUID;
 
 @Entity
 @NoArgsConstructor
@@ -30,5 +34,6 @@ public class LocalUser {
     private String lastName;
 
     private boolean isAdmin = false;
+
 
 }
